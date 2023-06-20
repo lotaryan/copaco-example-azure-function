@@ -1,0 +1,53 @@
+service: copaco-azure-test-function-lilit
+
+frameworkVersion: '3'
+
+provider:
+  name: azure
+  region: West Europe
+  runtime: python3.8
+
+
+plugins:
+  - serverless-azure-functions
+  - serverless-offline
+
+package:
+  patterns:
+    - '!env/**'
+    - '!.env/**'
+    - '!local.settings.json'
+    - '!.vscode/**'
+    - '!__pycache__/**'
+    - '!node_modules/**'
+    - '!.python_packages/**'
+    - '!.funcignore'
+    - '!package.json'
+    - '!package-lock.json'
+    - '!.gitignore'
+    - '!.git/**'
+
+functions:
+  hello:
+    handler: src/handlers/hello.main
+    events:
+      - http:
+          path: /hello
+          method: POST
+          authLevel: function
+
+  random_quote:
+    handler: src/handlers/random_quote.main
+    events:
+      - http:
+          path: /random_quote
+          method: GET
+          authLevel: function
+
+  all_authors_with_les:
+    handler: src/handlers/all_authors_with_les.main
+    events:
+      - http:
+          path: /all_authors_with_les
+          method: GET
+          authLevel: function

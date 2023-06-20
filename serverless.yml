@@ -1,4 +1,4 @@
-service: copaco-azure-test-function-lilit
+service: copaco-azure-test-function-lilit-final
 
 frameworkVersion: '3'
 
@@ -6,7 +6,7 @@ provider:
   name: azure
   region: West Europe
   runtime: python3.8
-
+  apim: true
 
 plugins:
   - serverless-azure-functions
@@ -34,7 +34,8 @@ functions:
       - http:
           path: /hello
           method: POST
-          authLevel: function
+          x-azure-settings:
+            authLevel: function
 
   random_quote:
     handler: src/handlers/random_quote.main
@@ -42,7 +43,8 @@ functions:
       - http:
           path: /random_quote
           method: GET
-          authLevel: function
+          x-azure-settings:
+            authLevel: function
 
   all_authors_with_les:
     handler: src/handlers/all_authors_with_les.main
@@ -50,4 +52,5 @@ functions:
       - http:
           path: /all_authors_with_les
           method: GET
-          authLevel: function
+          x-azure-settings:
+            authLevel: function

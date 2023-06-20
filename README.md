@@ -61,3 +61,11 @@ sls deploy
 
 
 Refer to [Serverless docs](https://serverless.com/framework/docs/providers/azure/guide/intro/) for more information.
+
+## Endpoints
+
+ * `Main url`: https://sls-weur-dev-copaco-azure-test-function-lilit-final.azurewebsites.net/api/x
+ * `Query param for auth`: code={key} you can ask the key from developer
+ * `Endpoints`
+   * random_quote (GET)
+   * all_authors_with_les (GET)
